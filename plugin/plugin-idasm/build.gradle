@@ -1,0 +1,45 @@
+buildscript {
+    dependencies {
+        classpath 'org.aspectj:aspectjtools:1.9.6'
+    }
+}
+
+plugins {
+    id 'groovy'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation 'org.aspectj:aspectjtools:1.9.6'
+//    //transform
+    implementation 'com.android.tools.build:gradle:4.1.1'
+
+    //ASM相关
+    implementation 'org.ow2.asm:asm:5.1'
+    implementation 'org.ow2.asm:asm-util:5.1'
+    implementation 'org.ow2.asm:asm-commons:5.1'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'cn.idu.plugin'
+            artifactId = 'idasm'
+            version = '0.0.2'
+
+            from components.java//表明是一个java库，以jar形式发布
+        }
+    }
+
+    repositories {
+        maven {
+            url = '../repo/' //打包位置
+        }
+    }
+}

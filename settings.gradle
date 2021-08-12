@@ -1,0 +1,12 @@
+rootProject.name = "IWan"
+include ':app'
+
+include ':plugin:plugin-anno'
+include ':plugin:plugin-apt'
+include ':plugin:plugin-idasm'
+
+//include ':sample:sample-aspectj'
+
+include ':simple-aop:simple-aop-sample'
+include ':simple-aop:simple-proxy'
+//include ':plugin:plugin-transform'
